@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "R7d4cYGS7KZ71BsSG15utTPyvnzwQFsxoZUCHoUdt/w=",
+  "Source": "ebay_api",
+  "BasePath": "_content/ebay_api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
