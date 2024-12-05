@@ -10,7 +10,8 @@ namespace ebay_api.Services
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public OrderService(IOrderRepository orderRepository, IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
+        public OrderService(IOrderRepository orderRepository, IUserRepository userRepository,
+            IHttpContextAccessor httpContextAccessor)
         {
             _orderRepository = orderRepository;
             _userRepository = userRepository;
@@ -20,12 +21,15 @@ namespace ebay_api.Services
         // Extraer el username del token JWT
         private string GetUsernameFromJwt()
         {
-            var token = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString()?.Replace("Bearer ", "");
+            var token = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString()
+                ?.Replace("Bearer ", "");
             if (string.IsNullOrEmpty(token)) return null;
 
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadJwtToken(token);
-            var usernameClaim = jwtToken?.Claims?.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Email); // O usar "sub" si lo prefieres
+            var usernameClaim =
+                jwtToken?.Claims?.FirstOrDefault(c =>
+                    c.Type == JwtRegisteredClaimNames.Email); // O usar "sub" si lo prefieres
             return usernameClaim?.Value;
         }
 
@@ -38,7 +42,7 @@ namespace ebay_api.Services
 
             var user = await _userRepository.GetUserByEmailAsync(username);
             if (user == null)
-                throw new ("Usuario no encontrado.");
+                throw new("Usuario no encontrado.");
 
             return await _orderRepository.GetOrdersForUserAsync(int.Parse(user.Id));
         }
@@ -78,5 +82,6 @@ namespace ebay_api.Services
         {
             throw new NotImplementedException();
         }
+
     }
 }

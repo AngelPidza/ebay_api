@@ -268,3 +268,4 @@ C:\Users\ASUS ROG STRIX\source\repos\ebay_api\ebay_api\bin\Debug\net8.0\Microsof
 C:\Users\ASUS ROG STRIX\source\repos\ebay_api\ebay_api\bin\Debug\net8.0\ebay_api.staticwebassets.endpoints.json
 C:\Users\ASUS ROG STRIX\source\repos\ebay_api\ebay_api\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\ASUS ROG STRIX\source\repos\ebay_api\ebay_api\obj\Debug\net8.0\staticwebassets\msbuild.ebay_api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\ASUS ROG STRIX\source\repos\ebay_api\ebay_api\obj\Debug\net8.0\ebay_api.sourcelink.json

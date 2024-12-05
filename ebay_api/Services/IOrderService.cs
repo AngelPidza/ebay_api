@@ -11,5 +11,6 @@ namespace ebay_api.Services
         Task<Order> CreateOrderAsync(string username, Order model);
         Task UpdateOrderAsync(Order order);
         Task DeleteOrderAsync(int id);
+        //Nuevo
     }
 }

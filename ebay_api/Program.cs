@@ -19,6 +19,8 @@ builder.Services.AddTransient<IOrderService, OrderService>(); // Nuevo servicio
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>(); // Nuevo repositorio
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -57,6 +59,21 @@ builder.Services.AddAuthentication(options =>
     options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(13226); // Tu puerto
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -71,7 +88,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+
 app.UseAuthorization();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
